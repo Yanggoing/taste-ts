@@ -87,3 +87,58 @@ class Demo {
 }
 
 const demo1 = Demo.getInstance();
+
+// readonly
+// class Abman {
+//   private readonly name: string;
+//   constructor(name: string) {
+//     this.name = name
+//   }
+// }
+// const abman = new Abman("zy");
+// abman.name = "hello";
+
+// 抽象类 纯虚函数
+// abstract class Geom {
+//   width: number;
+//   getType() {
+//     return "Geom";
+//   }
+//   abstract getArea(): number;
+// }
+
+// class Circle extends Geom {
+//   getArea() {
+//     return 123;
+//   }
+// }
+
+// class Square {}
+
+// class Triangle {}
+
+interface Person {
+  name: string;
+}
+
+interface Teacher extends Person {
+  teachingAge: number;
+}
+
+interface Student extends Person {
+  age: number;
+}
+
+const teacher = {
+  name: "zy",
+  teachingAge: 20,
+};
+
+const student = {
+  name: "zyyyy",
+  age: 18,
+};
+
+const getUserInfo = (user: Teacher | Student) => {
+  console.log(user.name);
+};
