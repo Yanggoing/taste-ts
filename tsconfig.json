@@ -11,7 +11,8 @@
     // "lib": [],                             /* Specify library files to be included in the compilation. */
     "allowJs": true,
     /* 将JS代码进行编译. */
-    // "checkJs": true,                       /* Report errors in .js files. */
+    "checkJs": true,
+    /* 对JS文件进行语法检测 */
     // "jsx": "preserve",                     /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
     // "declaration": true,                   /* Generates corresponding '.d.ts' file. */
     // "declarationMap": true,                /* Generates a sourcemap for each corresponding '.d.ts' file. */
