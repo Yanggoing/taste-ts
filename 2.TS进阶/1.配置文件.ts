@@ -1,3 +1,3 @@
-function demo(name: string){
-    
+function demo(name: any) {
+  console.log(name);
 }
