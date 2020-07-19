@@ -33,7 +33,7 @@ function add(first: string | number, second: string | number) {
   return first + second;
 }
 
-// 使用instanceof 来做类型保护
+// 使用instanceof 来做类型保护 必须要定义类
 class NumberObj {
   count: number;
 }
