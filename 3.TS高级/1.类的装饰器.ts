@@ -9,17 +9,17 @@
 //   };
 // }
 
-function testDecorator(flag: boolean) {
-  if (flag) {
-    return function (constructor: any) {
-      constructor.prototype.getName = () => {
-        console.log("zy");
-      };
-    };
-  } else {
-    return function (constructor: any) {};
-  }
-}
+// function testDecorator(flag: boolean) {
+//   if (flag) {
+//     return function (constructor: any) {
+//       constructor.prototype.getName = () => {
+//         console.log("zy");
+//       };
+//     };
+//   } else {
+//     return function (constructor: any) {};
+//   }
+// }
 
 // function testDecorator1(constructor: any) {
 //     console.log("decorator1");
@@ -28,7 +28,38 @@ function testDecorator(flag: boolean) {
 // 顺序从下到上
 // @testDecorator
 // @testDecorator1
-@testDecorator(true)
-class Test {}
+// @testDecorator(true)
+// class Test {}
 
-const tt = new Test();
+// const tt = new Test();
+
+function testDecorator() {
+  return function <T extends new (...args: any[]) => {}>(constructor: T) {
+    return class extends constructor {
+      name = "zy";
+      getName() {
+        return this.name;
+      }
+    };
+  };
+}
+
+// @testDecorator
+// class Test {
+//   name: string;
+//   constructor(name: string) {
+//     this.name = name;
+//   }
+// }
+
+const Test = testDecorator()(
+  class {
+    name: string;
+    constructor(name: string) {
+      this.name = name;
+    }
+  }
+);
+
+const tttt = new Test("dell");
+console.log(tttt.getName());
