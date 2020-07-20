@@ -35,6 +35,7 @@
 
 function testDecorator() {
   return function <T extends new (...args: any[]) => {}>(constructor: T) {
+    // 方便扩展
     return class extends constructor {
       name = "zy";
       getName() {
@@ -52,6 +53,7 @@ function testDecorator() {
 //   }
 // }
 
+// 装饰器修饰
 const Test = testDecorator()(
   class {
     name: string;
