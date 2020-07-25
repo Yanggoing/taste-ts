@@ -1,0 +1,44 @@
+const userInfo: any = undefined;
+
+function catchError(msg: string) {
+  return function (target: any, key: string, descriptor: PropertyDescriptor) {
+    const fn = descriptor.value;
+    descriptor.value = function () {
+      try {
+        fn();
+      } catch (e) {
+        console.log(msg);
+      }
+    };
+  };
+}
+
+class Kest {
+  @catchError("userInfo.name不存在")
+  getName() {
+    return userInfo.name;
+  }
+
+  @catchError("userInfo.age不存在")
+  getAge() {
+    return userInfo.age;
+  }
+
+  //   getName() {
+  //     try {
+  //       return userInfo.name;
+  //     } catch (e) {
+  //       console.log("error");
+  //     }
+  //   }
+  //   getAge() {
+  //     try {
+  //       return userInfo.age;
+  //     } catch (e) {
+  //       console.log("error");
+  //     }
+  //   }
+}
+
+const kest = new Kest();
+kest.getAge();
